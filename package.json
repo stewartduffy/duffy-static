@@ -13,8 +13,10 @@
     "build": "phenomic build",
     "pretest": "npm run lint",
     "test": "npm run build",
-    "predeploy": "npm run build",
-    "deploy": "./scripts/deploy.sh"
+    "clean": "rm -rf dist/*",
+    "release": "npm run clean && npm run build",
+    "deploy": "cd dist && git add --all && git commit -m \"Release at $(date)\" && git push"
+
   },
   "phenomic": {
     "CNAME": true
