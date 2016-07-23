@@ -12,7 +12,6 @@
     "build": "phenomic build",
     "pretest": "npm run lint",
     "test": "npm run build",
-    // ...
     "predeploy": "npm run build",
     "deploy": "./scripts/deploy.sh"
   },
