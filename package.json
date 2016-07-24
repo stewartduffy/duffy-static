@@ -13,7 +13,8 @@
     "pretest": "npm run lint",
     "test": "npm run build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "gh-pages-travis": "gh-pages-travis"
   },
   "phenomic": {
     "CNAME": false
@@ -63,6 +64,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.1",
     "gh-pages": "^0.11.0",
+    "gh-pages-travis": "^1.0.0",
     "history": "^2.0.0",
     "invariant": "^2.1.1",
     "json-loader": "^0.5.2",
