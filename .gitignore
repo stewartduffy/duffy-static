@@ -2,6 +2,7 @@
 node_modules
 *.log
 
+deploy_key
 dist
 # phenomic build
 dist
