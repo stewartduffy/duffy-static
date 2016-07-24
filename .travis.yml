@@ -1,10 +1,15 @@
-script: ./scripts/deploy.sh
-env:
-  global:
-  - ENCRYPTION_LABEL: 12406b4b1545
-  - COMMIT_AUTHOR_EMAIL: "duffy.stewart@gmail.com"
-
 language: node_js
 node_js:
   - '5'
   - '4'
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: ./scripts/deploy.sh
+  'on':
+    branch: master
+    node: '5'
+env:
+  global:
+    - secure: >-
+        mHAhpaUj/nve1sYLfm/RbkkkGIXEDtN/Tmee4Q5e7Fg9jxyNcQsl9heesn9Ok1f64HjFn6j+iFkDg5dWDzyOgaEmPk4pVT9xleDq2FvxzTPHH8NYfjEZYp4OpBmVb5GTrAOD0c+naNbfepVIW2zEEjRkv4FPBOi7gEEiLDfW6VoX1L7bP6/xkZ3uWVfRgoOUiZ5tMpYMeg3kKPkioXPG3S08bMMa/aauu18+2IFrNkddkPiYHOeGH/2z4UHMXoTcSfDkomrqp2O5NSIUPGMAU1xB+NfKMBk7Iz37WAxt6QYi1ALWlLVFCuVpehqVrXsWmh2AEJqLAMFYqsIDhVvFez5eNHPaPAukk5ofrVNfJU4OyC+RoAhzmcY/2cWAKoOf0U+xBfJshawy6SDPvoMRt90RjKem/qMBRpspz0PH3e3i93fdKOuY2JI0hJdK2OXSpZMXnyCiqN+XfH9LQXIU4bAngQ6cRYWGMJcZ5BwPCXDs/G+L7bR1M7x7YXxNH0HGqWyN1A7wxBrcik30pwd5pek8l1szREbSb4HpAm1DFKoxH4dTBndnBmc281tZjf/Bv4DSjCCpFayPsCZpH9M7tSAO19mahqqfIawq7wyCGR3LRC8yCLq6i1smzFeVUrCVlvKYAHJaZs4UHIffIBUwV6r2ZwQvMcaVnLR5XcHmSxo=
