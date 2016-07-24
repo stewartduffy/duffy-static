@@ -2,6 +2,8 @@ script: bash ./scripts/deploy.sh
 env:
   global:
   - ENCRYPTION_LABEL: 12406b4b1545
+  - COMMIT_AUTHOR_EMAIL: "duffy.stewart@gmail.com"
+
 language: node_js
 node_js:
   - '5'
