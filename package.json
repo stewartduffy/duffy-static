@@ -11,10 +11,6 @@
     "start": "phenomic start",
     "build": "phenomic build",
     "pretest": "npm run lint",
-    "test": "npm run build",
-    "clean": "rm -rf dist/*",
-    "release": "npm run clean && npm run build",
-    "deploy2": "cd dist && git add --all && git commit -m \"Release at $(date)\" && git push",
 
     "test": "npm run build",
     "predeploy": "npm run build",
