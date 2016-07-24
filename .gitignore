@@ -3,6 +3,7 @@ node_modules
 *.log
 
 deploy_key
+*.pub
 dist
 # phenomic build
 dist
