@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "stewart-duffy-phenomic",
-  "homepage": "http://stewartduffy.com/",
+  "homepage": "http://stewartduffy.com/duffy-static/",
   "twitter": "sbf_duffy",
   "repository": "git@github.com:stewartduffy/duffy-static.git",
   "scripts": {
@@ -11,13 +11,12 @@
     "start": "phenomic start",
     "build": "phenomic build",
     "pretest": "npm run lint",
-
     "test": "npm run build",
     "predeploy": "npm run build",
-    "deploy": "./scripts/deploy.sh"
+    "deploy": "gh-pages -d dist"
   },
   "phenomic": {
-    "CNAME": true
+    "CNAME": false
   },
   "babel": {
     "presets": [
@@ -63,6 +62,7 @@
     "eslint-plugin-react": "^4.3.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.1",
+    "gh-pages": "^0.11.0",
     "history": "^2.0.0",
     "invariant": "^2.1.1",
     "json-loader": "^0.5.2",
