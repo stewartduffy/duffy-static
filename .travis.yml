@@ -6,13 +6,15 @@ branches:
   - gh-pages
 before_install:
 - openssl aes-256-cbc -K $encrypted_4c740aea3992_key -iv $encrypted_4c740aea3992_iv
+  -in deploy_key.enc -out deploy_key -d
+- openssl aes-256-cbc -K $encrypted_4c740aea3992_key -iv $encrypted_4c740aea3992_iv
   -in id_rsa.enc -out id_rsa -d
 after_sucess:
-  - npm run gh-pages-travis
+- npm run gh-pages-travis
 env:
   global:
-    - SSH_KEY="id_rsa"
-    - GIT_NAME="Stewart Duffy"
-    - GIT_EMAIL="duffy.stewart@gmail.com"
-    - SOURCE_DIR="dist"
-    - DEPLOY_BRANCH="master"
+  - SSH_KEY="id_rsa"
+  - GIT_NAME="Stewart Duffy"
+  - GIT_EMAIL="duffy.stewart@gmail.com"
+  - SOURCE_DIR="dist"
+  - DEPLOY_BRANCH="master"
