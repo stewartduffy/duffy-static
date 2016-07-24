@@ -3,7 +3,7 @@
   "name": "stewart-duffy-phenomic",
   "homepage": "http://stewartduffy.com/",
   "twitter": "sbf_duffy",
-  "repository": "https://github.com/stewartduffy/duffy-static.git",
+  "repository": "git@github.com:stewartduffy/duffy-static.git",
   "scripts": {
     "lint:js": "eslint --ignore-path .gitignore --fix .",
     "lint:css": "stylelint \"web_modules/**/*.css\"",
