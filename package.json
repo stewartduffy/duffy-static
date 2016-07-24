@@ -15,8 +15,8 @@
     "test": "npm run build",
     "clean": "rm -rf dist/*",
     "release": "npm run clean && npm run build",
-    "deploy": "cd dist && git add --all && git commit -m \"Release at $(date)\" && git push"
-
+    "deploy": "cd dist && git add --all && git commit -m \"Release at $(date)\" && git push",
+    "test": "npm run build"
   },
   "phenomic": {
     "CNAME": true
