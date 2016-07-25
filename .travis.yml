@@ -4,8 +4,9 @@ node_js:
 branches:
   except:
   - gh-pages
+script: npm run build
 after_sucess:
-- npm run deploy
+- npm run gh-pages-travis
 env:
   global:
   - SSH_KEY="id_rsa"
