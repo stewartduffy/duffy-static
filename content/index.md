@@ -17,6 +17,7 @@ I enjoy what I do, and I love the web development community. Naturally I like to
 I have been working in the industry for over five years; working on a variety of projects either through freelancing, contracting or permanent employment. With agency, startup & client-side experience I have worked on projects in multiple industries including Education, Retail, Telecommunications, Print Media, Government and Advertising.
 
 ### Work History
+### Back, Back & forth & forth...
 
 * [Mighway](https://www.mighway.com/) / Auckland, NZ
     <small>September 2015 – Present</small>
