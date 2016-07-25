@@ -5,7 +5,7 @@ branches:
   except:
   - gh-pages
 after_sucess:
-- npm run gh-pages-travis
+- npm run deploy
 env:
   global:
   - SSH_KEY="id_rsa"
