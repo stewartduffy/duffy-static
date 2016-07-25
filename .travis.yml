@@ -7,8 +7,12 @@ branches:
 before_install:
 - openssl aes-256-cbc -K $encrypted_12406b4b1545_key -iv $encrypted_12406b4b1545_iv
   -in id_rsa.enc -out id_rsa -d
-script: npm run build
 deploy:
+  # keep the build we just made with "npm test" (dist/)
+  skip_cleanup: true
+
+  # define the script to use for deployment
+  provider: script
   script: npm run gh-pages-travis
 env:
   global:
