@@ -4,9 +4,12 @@ node_js:
 branches:
   except:
   - gh-pages
+before_install:
+- openssl aes-256-cbc -K $encrypted_12406b4b1545_key -iv $encrypted_12406b4b1545_iv
+  -in id_rsa.enc -out id_rsa -d
 script: npm run build
-after_sucess:
-- npm run gh-pages-travis
+deploy:
+  script: npm run gh-pages-travis
 env:
   global:
   - SSH_KEY="id_rsa"
@@ -14,6 +17,3 @@ env:
   - GIT_EMAIL="duffy.stewart@gmail.com"
   - SOURCE_DIR="dist"
   - DEPLOY_BRANCH="master"
-before_install:
-- openssl aes-256-cbc -K $encrypted_12406b4b1545_key -iv $encrypted_12406b4b1545_iv
-  -in id_rsa.enc -out id_rsa -d
