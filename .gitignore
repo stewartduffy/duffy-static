@@ -3,6 +3,7 @@ node_modules
 *.log
 
 deploy_key
+id_rsa
 *.pub
 dist
 # phenomic build
