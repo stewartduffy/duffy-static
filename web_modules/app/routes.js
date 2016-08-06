@@ -10,6 +10,8 @@ import PageLoading from '../layouts/PageLoading'
 import Homepage from '../layouts/Homepage'
 import Post from '../layouts/Post'
 
+require('bootstrap-loader')
+
 class PageContainer extends Component {
   render () {
     const { props } = this

@@ -10,7 +10,6 @@
     "lint": "npm-run-all --parallel lint:*",
     "start": "phenomic start",
     "build": "phenomic build",
-    "pretest": "npm run lint",
     "test": "npm run build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
