@@ -1,9 +1,12 @@
-import path from "path"
+import path from 'path'
 
-import webpack from "webpack"
-import ExtractTextPlugin from "extract-text-webpack-plugin"
+import webpack from 'webpack'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
-import pkg from "./package.json"
+import pkg from './package.json'
+
+
+// require('bootstrap-loader')
 
 // note that this webpack file is exporting a "makeConfig" function
 // which is used for phenomic to build dynamic configuration based on your needs
@@ -12,7 +15,7 @@ import pkg from "./package.json"
 export const makeConfig = (config = {}) => {
   return {
     ...config.dev && {
-      devtool: "#cheap-module-eval-source-map",
+      devtool: '#cheap-module-eval-source-map'
     },
     module: {
       noParse: /\.min\.js/,
@@ -23,7 +26,7 @@ export const makeConfig = (config = {}) => {
         {
           // phenomic requirement
           test: /\.md$/,
-          loader: "phenomic/lib/content-loader",
+          loader: 'phenomic/lib/content-loader'
           // config is in phenomic.contentLoader section below
           // so you can use functions (and not just JSON) due to a restriction
           // of webpack that serialize/deserialize loader `query` option.
@@ -33,37 +36,49 @@ export const makeConfig = (config = {}) => {
         // (not handled by webpack by default)
         {
           test: /\.json$/,
-          loader: "json-loader",
+          loader: 'json-loader'
         },
 
         // *.js => babel + eslint
+
+
         {
           test: /\.js$/,
           loaders: [
             `babel-loader${
               config.dev
-              ? "?cacheDirectory=true&presets[]=babel-preset-react-hmre"
-              : "?cacheDirectory=true"
+              ? '?cacheDirectory=true&presets[]=babel-preset-react-hmre'
+              : '?cacheDirectory=true'
             }`,
-            "eslint-loader?fix",
+            'eslint-loader?fix'
           ],
           include: [
-            path.resolve(__dirname, "scripts"),
-            path.resolve(__dirname, "web_modules"),
-          ],
+            path.resolve(__dirname, 'scripts'),
+            path.resolve(__dirname, 'web_modules')
+            // path.resolve(__dirname, 'node_modules')
+          ]
         },
 
-        // ! \\
-        // by default *.css files are considered as CSS Modules
-        // And *.global.css are considered as global (normal) CSS
 
-        // *.css => CSS Modules
+
+        // {
+        //   // Transform our own .css files with PostCSS and CSS-modules
+        //   test: /\.css$/,
+        //   // exclude: /node_modules/,
+        //   exclude: /\.global\.css$/,
+        //   include: path.resolve(__dirname, 'web_modules'),
+        //   loader: [
+        //     'style-loader',
+        //     'css-loader?modules&importLoaders=1&sourceMap',
+        //     'postcss-loader'
+        //   ].join('!')
+        // },
         {
           test: /\.css$/,
           exclude: /\.global\.css$/,
           include: path.resolve(__dirname, "web_modules"),
           loader: ExtractTextPlugin.extract(
-            "style-loader",
+            'style-loader',
             [ `css-loader?modules&localIdentName=${
                 config.production
                 ? "[hash:base64:5]"
@@ -73,15 +88,38 @@ export const makeConfig = (config = {}) => {
             ].join("!"),
           ),
         },
+
         // *.global.css => global (normal) css
+
         {
           test: /\.global\.css$/,
-          include: path.resolve(__dirname, "web_modules"),
+          include: path.resolve(__dirname, 'web_modules'),
           loader: ExtractTextPlugin.extract(
-            "style-loader",
-            [ "css-loader", "postcss-loader" ].join("!"),
-          ),
+            'style-loader',
+            [ 'css-loader', 'postcss-loader' ].join('!'),
+          )
         },
+
+        {
+            test: /\.scss$/,
+            loader: ExtractTextPlugin.extract(
+                'style', // backup loader when not building .css file
+                'css!sass' // loaders to preprocess CSS
+            )
+        },
+
+
+
+        // {
+        //   test: /\.global\.scss$/,
+        //   include: path.resolve(__dirname, 'web_modules'),
+        //   loader: [
+        //     'style-loader',
+        //     'css-loader',
+        //     'sass-loader'
+        //   ].join('!')
+        // },
+
         // ! \\
         // If you want global CSS only, just remove the 2 sections above
         // and use the following one
@@ -112,17 +150,17 @@ export const makeConfig = (config = {}) => {
         // copy assets and return generated path in js
         {
           test: /\.(html|ico|jpe?g|png|gif)$/,
-          loader: "file-loader" +
-            "?name=[path][name].[hash].[ext]&context=" +
-            path.join(__dirname, config.source),
+          loader: 'file-loader' +
+            '?name=[path][name].[hash].[ext]&context=' +
+            path.join(__dirname, config.source)
         },
 
         // svg as raw string to be inlined
         {
           test: /\.svg$/,
-          loader: "raw-loader",
-        },
-      ],
+          loader: 'raw-loader'
+        }
+      ]
     },
 
     phenomic: {
@@ -131,51 +169,61 @@ export const makeConfig = (config = {}) => {
         // renderer: (text) => html
         feedsOptions: {
           title: pkg.name,
-          site_url: pkg.homepage,
+          site_url: pkg.homepage
         },
         feeds: {
-          "feed.xml": {
+          'feed.xml': {
             collectionOptions: {
-              filter: { layout: "Post" },
-              sort: "date",
+              filter: { layout: 'Post' },
+              sort: 'date',
               reverse: true,
-              limit: 20,
-            },
-          },
-        },
-      },
+              limit: 20
+            }
+          }
+        }
+      }
     },
 
     postcss: () => [
-      require("stylelint")(),
-      require("postcss-cssnext")({ browsers: "last 2 versions" }),
-      require("postcss-reporter")(),
+      // require("stylelint")(),
+      require('postcss-cssnext')({
+        browsers: [
+          'last 2 versions',
+          'IE > 10'
+        ] // ...based on this browser list
+      }),
+      require('postcss-reporter')(),
       ...config.production ? [
-        require("postcss-browser-reporter")(),
-      ] : [],
+        require('postcss-browser-reporter')()
+      ] : []
     ],
 
     plugins: [
-      new ExtractTextPlugin("[name].[hash].css", { disable: config.dev }),
+      new ExtractTextPlugin('[name].[hash].css', { disable: config.dev }),
       ...config.production && [
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin(
           { compress: { warnings: false } }
-        ),
-      ],
+        )
+      ]
     ],
 
     output: {
       path: path.join(__dirname, config.destination),
       publicPath: config.baseUrl.pathname,
-      filename: "[name].[hash].js",
+      filename: '[name].[hash].js'
     },
 
+  // output = {
+  // path: 'build',
+  // publicPath: 'http://0.0.0.0:8080/'
+  // filename: 'bundle.js'
+
     resolve: {
-      extensions: [ ".js", ".json", "" ],
-      root: [ path.join(__dirname, "node_modules") ],
+      extensions: [ '.js', '.json', '' ],
+      root: [ path.join(__dirname, 'node_modules') ]
     },
-    resolveLoader: { root: [ path.join(__dirname, "node_modules") ] },
+    resolveLoader: { root: [ path.join(__dirname, 'node_modules') ] }
   }
 }
 

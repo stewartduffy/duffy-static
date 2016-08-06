@@ -1,9 +1,10 @@
 ---
-title: Phenomic default boilerplate
+title: ''
+metaTitle: Stewart Duffy
 layout: Homepage
 ---
 
-Hello! I'm Stewart Duffy, a Front-End Developer who makes websites and apps. I mostly trade in the trifecta of HTML5, CSS3 & JavaScript, but like any self-respecting digital worker I utilise an array of other tools & tech to get the job done..
+Hello! I'm Stewart Duffy, a **Front-End Developer** who makes websites and apps. I mostly trade in the trifecta of HTML5, CSS3 & JavaScript, but like any self-respecting digital worker I utilise an array of other tools & tech to get the job done..
 
 I enjoy what I do, and I love the web development community. Naturally I like to meet other fellow web workers, so I regularly go to local meetups, and I jump at the opportunity to attend conferences & workshops to learn from the masters.
 
@@ -16,7 +17,7 @@ I enjoy what I do, and I love the web development community. Naturally I like to
 
 I have been working in the industry for over five years; working on a variety of projects either through freelancing, contracting or permanent employment. With agency, startup & client-side experience I have worked on projects in multiple industries including Education, Retail, Telecommunications, Print Media, Government and Advertising.
 
-### Work History. It puts the lotion on the skin baby!
+### Work History.
 
 * [Mighway](https://www.mighway.com/) / Auckland, NZ
     <small>September 2015 – Present</small>
@@ -37,10 +38,8 @@ I have been working in the industry for over five years; working on a variety of
 * Jagged Media Ltd / Auckland, NZ
     <small>June 2009 – November 2010</small>
 
+### Let’s talk
 
+I am not currently looking for something new, however I am always happy to talk. If you want to chat please call 027 383 3901 or [email me](mailto:duffy.stewart@gmail.com) at duffy.stewart@gmail.com.
 
-Built with
-<a href="https://facebook.github.io/react/">
-  <img alt="" src="assets/react.svg" width="16" height="16" />
-  React
-</a>.
+If you find me interesting, but you would rather stalk than talk, here’s my [LinkedIn](http://nz.linkedin.com/in/stewartduffy/en), [Twitter](https://twitter.com/sbf_duffy) & [CV](/downloads/stewart_duffy_cv.pdf) to get you started.

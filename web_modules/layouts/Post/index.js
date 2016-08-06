@@ -1,12 +1,12 @@
-import React, { Component, PropTypes } from "react"
+import React, { Component, PropTypes } from 'react'
 
-import Page from "../Page"
+import Page from '../Page'
 
 class Post extends Component {
 
   // it's up to you to choose what to do with this layout ;)
 
-  render() {
+  render () {
     const { props } = this
     const { head } = props
 
@@ -19,9 +19,9 @@ class Post extends Component {
           <header>
           {
             pageDate &&
-            <time key={ pageDate.toISOString() }>
-              { pageDate.toDateString() }
-            </time>
+              <time key={pageDate.toISOString()}>
+                {pageDate.toDateString()}
+              </time>
           }
           </header>
         }
@@ -31,7 +31,7 @@ class Post extends Component {
 }
 
 Post.propTypes = {
-  head: PropTypes.object.isRequired,
+  head: PropTypes.object.isRequired
 }
 
 export default Post

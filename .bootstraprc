@@ -1,0 +1,12 @@
+---
+# You can use comments here
+useFlexbox: true
+
+styleLoaders:
+  - style
+  - css
+  - sass
+
+styles:
+  normalize: true
+  print: true

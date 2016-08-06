@@ -1,14 +1,14 @@
-import React, { Component, PropTypes } from "react"
-import Helmet from "react-helmet"
-import invariant from "invariant"
-import { BodyContainer, joinUri } from "phenomic"
+import React, { Component, PropTypes } from 'react'
+import Helmet from 'react-helmet'
+import invariant from 'invariant'
+import { BodyContainer, joinUri } from 'phenomic'
 
 class Page extends Component {
-  render() {
+  render () {
     const { props, context } = this
 
     const {
-      pkg,
+      pkg
     } = context.metadata
 
     const {
@@ -17,46 +17,44 @@ class Page extends Component {
       head,
       body,
       header,
-      footer,
+      footer
     } = props
 
     invariant(
-      typeof head.title === "string",
-      `Your page '${ __filename }' needs a title`
+      typeof head.title === 'string',
+      `Your page '${__filename}' needs a title`
     )
 
     const metaTitle = head.metaTitle ? head.metaTitle : head.title
 
     const meta = [
-      { property: "og:type", content: "article" },
-      { property: "og:title", content: metaTitle },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:title', content: metaTitle },
       {
-        property: "og:url",
-        content: joinUri(process.env.PHENOMIC_USER_URL, __url),
+        property: 'og:url',
+        content: joinUri(process.env.PHENOMIC_USER_URL, __url)
       },
-      { property: "og:description", content: head.description },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: metaTitle },
-      { name: "twitter:creator", content: `@${ pkg.twitter }` },
-      { name: "twitter:description", content: head.description },
-      { name: "description", content: head.description },
+      { property: 'og:description', content: head.description },
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:title', content: metaTitle },
+      { name: 'twitter:creator', content: `@${pkg.twitter}` },
+      { name: 'twitter:description', content: head.description },
+      { name: 'description', content: head.description }
     ]
 
     return (
       <div>
         <Helmet
-          title={ metaTitle }
-          meta={ meta }
+          title={metaTitle}
+          meta={meta}
         />
-
         {
-          head.title &&
-          <h1>{ head.title }</h1>
+          head.title && <h1>{head.title}</h1>
         }
-        { header }
-        <BodyContainer>{ body }</BodyContainer>
-        { props.children }
-        { footer }
+        {header}
+        <BodyContainer>{body}</BodyContainer>
+        {props.children}
+        {footer}
       </div>
     )
   }
@@ -69,11 +67,11 @@ Page.propTypes = {
   head: PropTypes.object.isRequired,
   body: PropTypes.string.isRequired,
   header: PropTypes.element,
-  footer: PropTypes.element,
+  footer: PropTypes.element
 }
 
 Page.contextTypes = {
-  metadata: PropTypes.object.isRequired,
+  metadata: PropTypes.object.isRequired
 }
 
 export default Page
